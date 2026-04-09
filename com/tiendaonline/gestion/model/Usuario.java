@@ -14,9 +14,15 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity	// Indica que esta clase es una entidad JPA y se mapeará a una tabla en la BBDD
 @Table(name = "usuarios")	// Especifica el nombre de la tabla en la base de datos a la que se mapeará esta entidad
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Usuario {
 	
 	@Id	// Indica que este campo es la clave primaria de la entidad
@@ -33,6 +39,7 @@ public class Usuario {
 	private String password;
 	
 	@Enumerated(EnumType.STRING)	// Especifica que este campo es un enumerado y se almacenará como una cadena en la BBDD
+	@Column(name = "rol", nullable = false)
 	private Rol role;
 	
 	private LocalDateTime createdAt;
