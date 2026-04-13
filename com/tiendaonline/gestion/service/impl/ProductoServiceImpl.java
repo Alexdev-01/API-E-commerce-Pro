@@ -8,6 +8,8 @@ import com.tiendaonline.gestion.model.Producto;
 import com.tiendaonline.gestion.repository.ProductoRepository;
 import com.tiendaonline.gestion.service.ProductoService;
 import org.springframework.stereotype.Service;
+import com.tiendaonline.gestion.exception.ResourceNotFoundException;
+
 
 
 @Service	// Marca esta clase como un componente de servicio en Spring
@@ -47,7 +49,7 @@ public class ProductoServiceImpl implements ProductoService{
 
 	@Override
 	public Producto obtenerPorId(Long id) {
-		return productoRepository.findById(id).orElseThrow(() -> new RuntimeException("Producto no encontrado"));
+		return productoRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Producto no encontrado"));
 	}
 
 	@Override
