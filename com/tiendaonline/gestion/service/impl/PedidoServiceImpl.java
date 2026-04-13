@@ -3,6 +3,7 @@ package com.tiendaonline.gestion.service.impl;
 import java.math.BigDecimal;
 import java.util.List;
 
+import org.apache.coyote.BadRequestException;
 import org.springframework.stereotype.Service;
 
 import com.tiendaonline.gestion.dto.pedido.CrearPedidoRequest;
@@ -15,6 +16,8 @@ import com.tiendaonline.gestion.repository.PedidoRepository;
 import com.tiendaonline.gestion.repository.ProductoRepository;
 import com.tiendaonline.gestion.repository.UsuarioRepository;
 import com.tiendaonline.gestion.service.PedidoService;
+import com.tiendaonline.gestion.exception.StockInsuficienteException;
+
 
 import jakarta.transaction.Transactional;
 
@@ -54,6 +57,11 @@ public class PedidoServiceImpl implements PedidoService {
 	// Método para crear un nuevo pedido a partir de una solicitud y el nombre de usuario del cliente
 	public Pedido crearPedido(CrearPedidoRequest request, String username) {
 		
+		//valida extra
+		if (request.getItems() == null || request.getItems().isEmpty()) {
+			throw new BadRequestException("El pedido debe tener al menos un producto");
+		}
+
 		Usuario usuario = usuarioRepository.findByUsername(username).orElseThrow();
 		
 		Pedido pedido = new Pedido();
@@ -62,10 +70,10 @@ public class PedidoServiceImpl implements PedidoService {
 		BigDecimal total = BigDecimal.ZERO;
 		
 		for (ItemPedidoRequest item : request.getItems()) {
-			Producto producto = productoRepository.findById(item.getProductoId()).orElseThrow(() -> new RuntimeException("Producto no encontrado"));
+			Producto producto = productoRepository.findById(item.getProductoId()).orElseThrow(() -> new ResourceNotFoundException("Producto no encontrado"));
 			
 			if (producto.getStock() < item.getCantidad()) {
-				throw new RuntimeException("Stock insuficiente para: " + producto.getNombre());
+				throw new StockInsuficienteException("Stock insuficiente para: " + producto.getNombre());
 			}
 			
 			//Reducir Stock del producto
