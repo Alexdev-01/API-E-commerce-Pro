@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 import com.tiendaonline.gestion.model.Categoria;
 import com.tiendaonline.gestion.repository.CategoriaRepository;
 import com.tiendaonline.gestion.service.CategoriaService;
+import com.tiendaonline.gestion.exception.ResourceNotFoundException;
+
 
 @Service	// Marca esta clase como un componente de servicio en Spring
 // Implementa la interfaz CategoriaService para proporcionar la lógica de negocio relacionada con las categorías
@@ -25,7 +27,7 @@ public class CategoriaServiceImpl implements CategoriaService {
 	
 	@Override
 	public Categoria obtenerPorId(Long id) {
-		return categoriaRepository.findById(id).orElseThrow(() -> new RuntimeException("Categoría no encontrada"));
+		return categoriaRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Categoría no encontrada"));
 	}
 	
 
