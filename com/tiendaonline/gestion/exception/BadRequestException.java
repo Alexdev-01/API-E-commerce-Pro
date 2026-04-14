@@ -1,9 +1,16 @@
-package com.gestiontareas.todolist.exception;
+package com.tiendaonline.gestion.exception;
 
-// Excepción personalizada para manejar errores de solicitud incorrecta (HTTP 400 Bad Request)
-public class BadRequestException extends RuntimeException{
-	
-	public BadRequestException (String messager) {
-		super(messager);
-	}
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.ResponseStatus;
+
+@ResponseStatus(HttpStatus.BAD_REQUEST)
+public class BadRequestException extends RuntimeException {
+
+    public BadRequestException(String mensaje) {
+        super(mensaje);
+    }
+
+    public BadRequestException(String mensaje, Throwable causa) {
+        super(mensaje, causa);
+    }
 }
