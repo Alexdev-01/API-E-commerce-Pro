@@ -3,11 +3,13 @@ package com.tiendaonline.gestion.service.impl;
 import java.math.BigDecimal;
 import java.util.List;
 
-import org.apache.coyote.BadRequestException;
 import org.springframework.stereotype.Service;
 
 import com.tiendaonline.gestion.dto.pedido.CrearPedidoRequest;
 import com.tiendaonline.gestion.dto.pedido.ItemPedidoRequest;
+import com.tiendaonline.gestion.exception.BadRequestException;
+import com.tiendaonline.gestion.exception.ResourceNotFoundException;
+import com.tiendaonline.gestion.exception.StockInsuficienteException;
 import com.tiendaonline.gestion.model.DetallePedido;
 import com.tiendaonline.gestion.model.Pedido;
 import com.tiendaonline.gestion.model.Producto;
@@ -16,7 +18,6 @@ import com.tiendaonline.gestion.repository.PedidoRepository;
 import com.tiendaonline.gestion.repository.ProductoRepository;
 import com.tiendaonline.gestion.repository.UsuarioRepository;
 import com.tiendaonline.gestion.service.PedidoService;
-import com.tiendaonline.gestion.exception.StockInsuficienteException;
 
 
 import jakarta.transaction.Transactional;
