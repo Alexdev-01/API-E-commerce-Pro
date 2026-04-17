@@ -8,6 +8,8 @@ import com.tiendaonline.gestion.model.Producto;
 import com.tiendaonline.gestion.repository.ProductoRepository;
 import com.tiendaonline.gestion.service.ProductoService;
 import org.springframework.stereotype.Service;
+
+import com.tiendaonline.gestion.dto.producto.ProductoResponse;
 import com.tiendaonline.gestion.exception.ResourceNotFoundException;
 
 
@@ -48,13 +50,24 @@ public class ProductoServiceImpl implements ProductoService{
 	}
 
 	@Override
-	public Producto obtenerPorId(Long id) {
-		return productoRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Producto no encontrado"));
+	public ProductoResponse obtenerPorId(Long id) {
+		Producto producto = productoRepository.findById(id)
+				.orElseThrow(() -> new ResourceNotFoundException("Producto no encontrado con id: " + id));
+		return mapToResponse(producto);
 	}
 
 	@Override
-	public List<Producto> listarTodos() {
-		return productoRepository.findAll();
+	public List<ProductoResponse> listarTodos() {
+		return productoRepository.findAll()
+				.stream().filter(Producto::getActivo).map(this::mapToResponse).toList();
 	}
+	
+	// Método privado para mapear un objeto Producto a un ProductoResponse
+	private ProductoResponse mapToResponse(Producto producto) {
+		return new ProductoResponse(
+				producto.getId(), producto.getNombre(), producto.getDescripcion(),producto.getPrecio(),
+				producto.getStock(), producto.getCategoria() != null? producto.getCategoria().getNombre() : null);
+	}
+	
 
 }
