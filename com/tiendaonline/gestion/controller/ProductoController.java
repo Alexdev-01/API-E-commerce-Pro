@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.tiendaonline.gestion.dto.producto.ProductoResponse;
 import com.tiendaonline.gestion.model.Producto;
 import com.tiendaonline.gestion.service.ProductoService;
 
@@ -34,13 +35,13 @@ public class ProductoController {
 	
 	//Acceso public
 	@GetMapping
-	public ResponseEntity<List<Producto>> listarProductos() {
+	public ResponseEntity<List<ProductoResponse>> listarProductos() {
 		return ResponseEntity.ok(productoService.listarTodos());
 	}
 	
 	//Acceso public
 	@GetMapping("/{id}")
-	public ResponseEntity<Producto> obtenerproductos(@PathVariable Long id) {
+	public ResponseEntity<ProductoResponse> obtenerproductos(@PathVariable Long id) {
 		return ResponseEntity.ok(productoService.obtenerPorId(id));
 	}
 	
