@@ -2,6 +2,8 @@ package com.tiendaonline.gestion.service.impl;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import com.tiendaonline.gestion.model.Producto;
@@ -67,6 +69,18 @@ public class ProductoServiceImpl implements ProductoService{
 		return new ProductoResponse(
 				producto.getId(), producto.getNombre(), producto.getDescripcion(),producto.getPrecio(),
 				producto.getStock(), producto.getCategoria() != null? producto.getCategoria().getNombre() : null);
+	}
+
+	@Override
+	public Page<ProductoResponse> listarProductosPaginados(int page, int size) {
+		
+		//todos los productos
+		//Page<Producto> producto = productoRepository.findAll(PageRequest.of(page, size));
+		
+		//solo los productos activos
+		Page<Producto> producto = productoRepository.findByActivoTrue(PageRequest.of(page, size));
+		
+		return producto.map(this::mapToResponse);
 	}
 	
 
