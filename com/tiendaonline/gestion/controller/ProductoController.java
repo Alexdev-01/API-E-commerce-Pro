@@ -10,7 +10,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.data.domain.Page;
+
 
 import com.tiendaonline.gestion.dto.producto.ProductoResponse;
 import com.tiendaonline.gestion.model.Producto;
@@ -56,6 +59,14 @@ public class ProductoController {
 	public ResponseEntity<Void> eliminarProducto(@PathVariable Long id) {	
 		productoService.eliminarProducto(id);
 		return ResponseEntity.noContent().build();
+	}
+	
+	//Acceso public
+	@GetMapping
+	public ResponseEntity<Page<ProductoResponse>> listarProductos(@RequestParam(defaultValue = "0") int page,@RequestParam(defaultValue = "5") int size) {
+		
+		return ResponseEntity.ok(productoService.listarProductosPaginados(page, size));
+	
 	}
 	
 }
