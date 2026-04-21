@@ -1,5 +1,6 @@
 package com.tiendaonline.gestion.service;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import org.springframework.data.domain.Page;
@@ -20,5 +21,7 @@ public interface ProductoService {
 	List<Producto> listarTodos();
 	
 	Page<ProductoResponse> listarProductosPaginados(int page, int size);
+	
+	Page<ProductoResponse> filtrarPrductos(Long categoriaId, BigDecimal precioMin, BigDecimal precioMax, int page, int size);
 
 }
