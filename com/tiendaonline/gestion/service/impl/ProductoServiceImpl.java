@@ -1,5 +1,6 @@
 package com.tiendaonline.gestion.service.impl;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import org.springframework.data.domain.Page;
@@ -82,6 +83,15 @@ public class ProductoServiceImpl implements ProductoService{
 		
 		return producto.map(this::mapToResponse);
 	}
+
+	@Override
+	public Page<ProductoResponse> filtrarPrductos(Long categoriaId, BigDecimal precioMin, BigDecimal precioMax, int page, int size) {
+		Page<Producto> producto = productoRepository.filtrarProductos(categoriaId, precioMin, precioMax, PageRequest.of(page, size));
+		return producto.map(this::mapToResponse);
+	}
+	
+	
+	
 	
 
 }
