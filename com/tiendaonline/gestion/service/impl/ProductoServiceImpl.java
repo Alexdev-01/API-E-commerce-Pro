@@ -32,9 +32,15 @@ public class ProductoServiceImpl implements ProductoService{
 		return productoRepository.save(producto);
 	}
 
+	// Método auxiliar interno para obtener la entidad Producto (no el DTO)
+	private Producto obtenerEntidadPorId(Long id) {
+		return productoRepository.findById(id)
+				.orElseThrow(() -> new ResourceNotFoundException("Producto no encontrado con id: " + id));
+	}
+
 	@Override
 	public Producto actualizarProducto(Long id, Producto producto) {
-		Producto existente = obtenerPorId(id);
+		Producto existente = obtenerEntidadPorId(id);
 
 		existente.setNombre(producto.getNombre());
 		existente.setDescripcion(producto.getDescripcion());
@@ -47,7 +53,7 @@ public class ProductoServiceImpl implements ProductoService{
 
 	@Override
 	public void eliminarProducto(Long id) {
-		Producto producto = obtenerPorId(id);
+		Producto producto = obtenerEntidadPorId(id);
 		producto.setActivo(false); 
 		productoRepository.save(producto);
 	}
