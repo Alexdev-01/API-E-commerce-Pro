@@ -62,7 +62,7 @@ public class ProductoController {
 	}
 	
 	//Acceso public
-	@GetMapping
+	@GetMapping("/paginado")
 	public ResponseEntity<Page<ProductoResponse>> listarProductos(@RequestParam(defaultValue = "0") int page,@RequestParam(defaultValue = "5") int size) {
 		
 		return ResponseEntity.ok(productoService.listarProductosPaginados(page, size));
