@@ -16,9 +16,9 @@ public interface ProductoService {
 	
 	void eliminarProducto(Long id);
 	
-	Producto obtenerPorId(Long id);
+	ProductoResponse obtenerPorId(Long id);
 	
-	List<Producto> listarTodos();
+	List<ProductoResponse> listarTodos();
 	
 	Page<ProductoResponse> listarProductosPaginados(int page, int size);
 	
