@@ -39,6 +39,7 @@ Esta API permite gestionar el backend de una tienda online con funcionalidades c
 
 La aplicación sigue una arquitectura en capas:
 
+```
 📡 Cliente
 ↓
 📁 Controller
@@ -48,7 +49,7 @@ La aplicación sigue una arquitectura en capas:
 📁 Repository
 ↓
 🗄️ Base de Datos
-
+```
 
 ---
 
@@ -138,7 +139,7 @@ spring.jpa.show-sql=true
 
 ---
 
-🧪 Probar la API con Postman
+## 🧪 Probar la API con Postman
 🔑 1. Login
 
 POST /auth/login
