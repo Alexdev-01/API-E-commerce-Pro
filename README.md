@@ -140,7 +140,7 @@ spring.jpa.show-sql=true
 ---
 
 ## 🧪 Probar la API con Postman
-🔑 1. Login
+###🔑 1. Login
 
 POST /auth/login
 
@@ -180,18 +180,19 @@ Categoria 1 ──── N Producto
 
 La API implementa manejo global de excepciones:
 
+```
 {
   "mensaje": "Stock insuficiente",
   "status": 400,
   "timestamp": "2026-04-20T12:00:00"
 }
-
+```
 
 📚 Documentación Swagger
 
 Disponible en:
 
-http://localhost:8080/swagger-ui.html
+`http://localhost:8080/swagger-ui.html`
 
 Permite:
 
