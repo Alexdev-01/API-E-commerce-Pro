@@ -146,8 +146,8 @@ POST /auth/login
 
 Guardar token automáticamente:
 
-let jsonData = pm.response.json();
-pm.environment.set("token", jsonData.token);
+`let jsonData = pm.response.json();
+pm.environment.set("token", jsonData.token);`
 
 ---
 
