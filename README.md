@@ -54,6 +54,7 @@ La aplicación sigue una arquitectura en capas:
 
 ## 📦 Estructura de paquetes
 
+```
 com.tiendaonline.gestion
 │
 ├── 📁 controller
@@ -67,7 +68,7 @@ com.tiendaonline.gestion
 │ └── pedido
 ├── 📁 security
 ├── 📁 exception
-
+```
 
 ---
 
