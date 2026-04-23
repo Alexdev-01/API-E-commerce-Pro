@@ -68,7 +68,7 @@ com.tiendaonline.gestion
 │ ├── producto
 │ └── pedido
 ├── 📁 security
-├── 📁 exception
+└── 📁 exception
 ```
 
 ---
@@ -140,7 +140,7 @@ spring.jpa.show-sql=true
 ---
 
 ## 🧪 Probar la API con Postman
-###🔑 1. Login
+🔑 1. Login
 
 POST /auth/login
 
@@ -197,14 +197,15 @@ Disponible en:
 
 Permite:
 
-visualizar endpoints
-probar requests
-documentar la API automáticamente
+**visualizar endpoints**
+**probar requests**
+**documentar la API automáticamente**
 
 
 # 👨‍💻 Autor
 
-Desarrollado por **Alejandro Collado Severiano**
+Desarrollado por
+**Alejandro Collado Severiano**
 
 Backend Developer | Java | Spring Boot
 
