@@ -197,9 +197,9 @@ Disponible en:
 
 Permite:
 
-`visualizar endpoints`
-**probar requests**
-**documentar la API automáticamente**
+- visualizar endpoints
+- probar requests
+- documentar la API automáticamente
 
 
 # 👨‍💻 Autor
