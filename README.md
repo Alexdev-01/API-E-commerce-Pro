@@ -197,7 +197,7 @@ Disponible en:
 
 Permite:
 
-**visualizar endpoints**
+`visualizar endpoints`
 **probar requests**
 **documentar la API automáticamente**
 
@@ -228,5 +228,3 @@ https://www.postman.com/
 Hibernate
 https://hibernate.org
 
-Swagger
-https://swagger.io/
